@@ -1,23 +1,20 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
-using System.IO;
-using System;
 
-public class StormUtility : ModuleRules
+public class VMProtectPlugin : ModuleRules
 {
-	public StormUtility(TargetInfo Target)
+	public VMProtectPlugin(TargetInfo Target)
 	{
+        string vmDir = ModuleDirectory + "/DLL";
 
-//         string vmDir = Path.GetFullPath(Path.Combine(ModuleDirectory, "..", "..", "..", "VMProtect2"));
-// 
-//         PublicSystemIncludePaths.Add(vmDir);
-//         PublicAdditionalLibraries.Add(vmDir + "/VMProtectSDK64.lib");
-//         PublicLibraryPaths.Add(vmDir + "");
+        PublicSystemIncludePaths.Add(vmDir);
+        PublicAdditionalLibraries.Add(vmDir + "/VMProtectSDK64.lib");
+        PublicLibraryPaths.Add(vmDir + "");
 
         PublicIncludePaths.AddRange(
 			new string[] {
-				"StormUtility/Public"
+				"VMProtectPlugin/Public"
 				// ... add public include paths required here ...
 			}
 			);
@@ -25,7 +22,7 @@ public class StormUtility : ModuleRules
 		
 		PrivateIncludePaths.AddRange(
 			new string[] {
-				"StormUtility/Private",
+				"VMProtectPlugin/Private",
 				// ... add other private include paths required here ...
 			}
 			);
@@ -34,7 +31,7 @@ public class StormUtility : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core", "VMProtectPlugin"
+				"Core",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
